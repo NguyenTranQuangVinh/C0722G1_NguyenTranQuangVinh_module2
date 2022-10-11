@@ -46,10 +46,9 @@ public class Fan {
 
     public String toString() {
         if (this.on) {
-            return "speed: " + this.speed + " ,color: " + this.color + " ,radius:" + this.radius + "fan is on. ";
-        }
-        else {
-            return "color: "+ this.color + " ,radius:" + this.radius + "fan is off.";
+            return "speed: " + this.speed + " ,color: " + this.color + " ,radius: " + this.radius + "fan is on";
+        } else {
+            return "color: " + this.color + " ,radius: " + this.radius + "fan is off";
         }
     }
 }
