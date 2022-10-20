@@ -48,6 +48,6 @@ private double price;
     }
 
     public int compareTo(Product product) {
-        return this.getId() - product.getId();
+        return (int) (this.getPrice() - product.getPrice());
     }
 }

@@ -1,17 +1,24 @@
 package ss12_java_collection_framework.exercise;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class ProductManager {
     ArrayList<Product> list = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    public void add(){
+
+    public void add() {
         Product product = new Product();
         System.out.println("Nhập vào id sản phẩm muốn thêm: ");
         product.setId(Integer.parseInt(scanner.nextLine()));
         System.out.println("Nhập vào tên sản phẩm muốn thêm: ");
         product.setName(scanner.nextLine());
+        System.out.println("Nhập vào giá tiền của sản phẩm");
+        product.setPrice(Double.parseDouble(scanner.nextLine()));
         list.add(product);
-    } public void remove() {
+    }
+
+    public void remove() {
         System.out.println("Nhập vào id sản phẩm muốn xóa");
         int id = Integer.parseInt(scanner.nextLine());
         for (Product product : list) {
@@ -22,6 +29,7 @@ public class ProductManager {
         }
         System.out.println("Không tìm thấy sản phẩm");
     }
+
     public void edit() {
         System.out.println("Nhập vào id sản phẩm muốn sửa:");
         int id = Integer.parseInt(scanner.nextLine());
@@ -31,11 +39,14 @@ public class ProductManager {
                 product.setId(Integer.parseInt(scanner.nextLine()));
                 System.out.println("Nhập vào tên sản phẩm mới:");
                 product.setName(scanner.nextLine());
+                System.out.println("Nhập vào giá tiền mới của sản phẩm");
+                product.setPrice(Double.parseDouble(scanner.nextLine()));
                 return;
             }
         }
         System.out.println("Không tìm thấy sản phẩm");
     }
+
 
     public void display() {
         for (Product product : list) {
@@ -54,7 +65,8 @@ public class ProductManager {
         }
         System.out.println("Không tìm thấy sản phẩm");
     }
-    public void sort(){
+
+    public void sort() {
         list.sort(Product::compareTo);
         display();
     }
