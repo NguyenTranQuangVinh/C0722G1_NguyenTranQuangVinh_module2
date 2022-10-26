@@ -20,7 +20,7 @@ public class Triangle {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                System.out.println("cạnh sai định dangh");
+                System.out.println("cạnh sai định dạng");
             }
         }
         while (true) {
@@ -39,7 +39,7 @@ public class Triangle {
             }
         }
         try {
-            checkEdgeTriangle(sideC, sideB, sideA);
+            checkTriangle(sideC, sideB, sideA);
         } catch (IllegalArgumentException | IllegalTriangleException e) {
             System.out.println(e.getMessage());
         }
@@ -51,7 +51,7 @@ public class Triangle {
         }
     }
 
-    static void checkEdgeTriangle(double c, double b, double a) throws IllegalTriangleException {
+    static void checkTriangle(double c, double b, double a) throws IllegalTriangleException {
         double sumAB = sideA + sideB;
         double sumAC = sideA + sideC;
         double sumBC = sideB + sideC;
