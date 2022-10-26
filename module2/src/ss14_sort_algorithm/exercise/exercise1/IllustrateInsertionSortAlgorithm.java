@@ -14,6 +14,10 @@ public class IllustrateInsertionSortAlgorithm {
             arr[i] = Integer.parseInt(scanner.nextLine());
         }
         System.out.println("Mảng ban đầu là:\n" + Arrays.toString(arr));
+        insertionSort(arr);
+    }
+
+    public static void insertionSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int key = arr[i];
             int j;
