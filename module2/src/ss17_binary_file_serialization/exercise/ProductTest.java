@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ProductTest {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         ProductManagement productManagement = new ProductManagement();
         int choice;
@@ -25,7 +25,8 @@ public class ProductTest {
             switch (choice) {
                 case 1:
                     productManagement.add();
-                   productManagement.writeFile();
+//                   productManagement.writeFile();
+//                   productManagement.readFile();
                     break;
                 case 2:
                     productManagement.display();

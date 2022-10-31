@@ -1,18 +1,33 @@
 package ss17_binary_file_serialization.exercise;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductManagement {
     static ArrayList<Product> list = new ArrayList<>();
+     static {
+         FileInputStream fileInputStream = null;
+         File file = new File("src\\ss17_binary_file_serialization\\data\\data.dat");
+
+
+
+         ObjectInputStream objectInputStream = null;
+         try {
+             if (file.exists()) {
+                 fileInputStream = new FileInputStream(file);
+                 objectInputStream = new ObjectInputStream(fileInputStream);
+                 list = (ArrayList<Product>) objectInputStream.readObject();
+             }
+         } catch (IOException | ClassNotFoundException e) {
+             e.printStackTrace();
+         }
+
+     }
     Scanner scanner = new Scanner(System.in);
     public void writeFile() {
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("src\\ss17_binary_file_serialization\\exercise\\data.dat");
+            FileOutputStream fileOutputStream = new FileOutputStream("src\\ss17_binary_file_serialization\\data\\data.dat");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(list);
             objectOutputStream.close();
@@ -20,6 +35,7 @@ public class ProductManagement {
             e.printStackTrace();
         }
     }
+
     public void add() {
         Product product = new Product();
         System.out.println("Nhập vào mã sản phẩm muốn thêm: ");
@@ -33,6 +49,7 @@ public class ProductManagement {
         System.out.println("Các mô tả khác: ");
         product.setDescriptions(scanner.nextLine());
         list.add(product);
+        writeFile();
     }
 
     public void display() {
