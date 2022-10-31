@@ -1,16 +1,16 @@
-package ss19_string_regex.practice.practice1;
+package ss19_string_regex.exercise.exercise1;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EmailExample {
+public class ClassNameExample {
     private static Pattern pattern;
     private Matcher matcher;
 
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    private static final String CLASS_NAME = "^[CAP]([\\d]{4}[G-IK-M])$";
 
-    public EmailExample() {
-        pattern = Pattern.compile(EMAIL_REGEX);
+    public ClassNameExample() {
+        pattern = Pattern.compile(CLASS_NAME);
     }
 
     public boolean validate(String regex) {

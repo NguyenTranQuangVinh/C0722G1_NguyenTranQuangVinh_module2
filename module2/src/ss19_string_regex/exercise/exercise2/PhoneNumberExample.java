@@ -1,16 +1,14 @@
-package ss19_string_regex.practice.practice1;
-
+package ss19_string_regex.exercise.exercise2;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-public class EmailExample {
+public class PhoneNumberExample {
     private static Pattern pattern;
     private Matcher matcher;
 
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    private static final String PHONE_NUMBER = "^[(]\\d\\d[)]-[0](\\d{9})$";
 
-    public EmailExample() {
-        pattern = Pattern.compile(EMAIL_REGEX);
+    public PhoneNumberExample() {
+        pattern = Pattern.compile(PHONE_NUMBER);
     }
 
     public boolean validate(String regex) {
