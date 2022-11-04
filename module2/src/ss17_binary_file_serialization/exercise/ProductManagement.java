@@ -6,25 +6,27 @@ import java.util.Scanner;
 
 public class ProductManagement {
     static ArrayList<Product> list = new ArrayList<>();
-     static {
-         FileInputStream fileInputStream = null;
-         File file = new File("src\\ss17_binary_file_serialization\\data\\data.dat");
+
+    static {
+        FileInputStream fileInputStream;
+        File file = new File("src\\ss17_binary_file_serialization\\data\\data.dat");
 
 
+        ObjectInputStream objectInputStream = null;
+        try {
+            if (file.exists()) {
+                fileInputStream = new FileInputStream(file);
+                objectInputStream = new ObjectInputStream(fileInputStream);
+                list = (ArrayList<Product>) objectInputStream.readObject();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-         ObjectInputStream objectInputStream = null;
-         try {
-             if (file.exists()) {
-                 fileInputStream = new FileInputStream(file);
-                 objectInputStream = new ObjectInputStream(fileInputStream);
-                 list = (ArrayList<Product>) objectInputStream.readObject();
-             }
-         } catch (IOException | ClassNotFoundException e) {
-             e.printStackTrace();
-         }
+    }
 
-     }
     Scanner scanner = new Scanner(System.in);
+
     public void writeFile() {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("src\\ss17_binary_file_serialization\\data\\data.dat");
