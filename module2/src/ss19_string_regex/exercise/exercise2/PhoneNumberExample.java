@@ -5,7 +5,7 @@ public class PhoneNumberExample {
     private static Pattern pattern;
     private Matcher matcher;
 
-    private static final String PHONE_NUMBER = "^[(]\\d\\d[)]-[0](\\d{9})$";
+    private static final String PHONE_NUMBER = "^[(]\\d\\d[)]-[(]0\\d{9}[)]$$";
 
     public PhoneNumberExample() {
         pattern = Pattern.compile(PHONE_NUMBER);
