@@ -1,15 +1,13 @@
 package ss11_stack_queue.exercise.exercise4;
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
+
 public class PalindromeUseQueue {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập chuỗi");
-        String str = scanner.nextLine();
+        String str = scanner.nextLine().toLowerCase();
         String[] strings = str.split("");
-        Queue<String> queue = new ArrayDeque<>();
+        Queue<String> queue = new LinkedList<>();
         Stack<String> stack = new Stack<>();
         for (int i = 0; i < strings.length; i++) {
             stack.push(strings[i]);
@@ -17,12 +15,11 @@ public class PalindromeUseQueue {
         }
         System.out.println(stack);
         System.out.println(queue);
-        boolean check = false;
-        for (int i = 0; i < strings.length; i++) {
-            if (!stack.peek().equals(queue.peek())) {
+        boolean check = true;
+        for (int i = 0; i < stack.size(); i++) {
+            if (!stack.pop().equals(queue.remove())) {
                 check = false;
-            } else {
-                check = true;
+                break;
             }
         }
         if (check == true) {

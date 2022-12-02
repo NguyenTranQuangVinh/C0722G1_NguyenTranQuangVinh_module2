@@ -1,4 +1,4 @@
-package ss3_class_and_object.exercise.exercise2;
+package ss4_class_and_object.exercise.exercise2;
 
 public class Fan {
     static final int slow = 1;

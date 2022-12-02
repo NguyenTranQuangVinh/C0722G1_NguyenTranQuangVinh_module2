@@ -1,4 +1,4 @@
-package ss3_class_and_object.exercise.exercise1;
+package ss4_class_and_object.exercise.exercise1;
 
 import java.util.Scanner;
 

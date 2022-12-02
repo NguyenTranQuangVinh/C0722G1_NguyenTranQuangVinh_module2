@@ -1,4 +1,4 @@
-package ss2_loop_and_array.exercise.exercise10;
+package ss2_ss3_loop_and_array.exercise.exercise10;
 
 import java.util.Scanner;
 
@@ -34,7 +34,7 @@ public class TwoDimensionalArraySumTheNumbersAtTheMainDiagonalOfASquareMatrix {
         int sum = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < m; j++) {
-                if (i == j) {
+                if (i == j || i + j == arr.length - 1) {
                     sum += arr[i][j];
                 }
             }

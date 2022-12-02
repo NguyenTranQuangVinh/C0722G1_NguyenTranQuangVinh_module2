@@ -1,32 +1,33 @@
 package student_management_program.Utils;
 
 import student_management_program.Models.Person;
+import student_management_program.Models.Student;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWriteFile {
-    public static List<Person> readFile() throws IOException {
-        File file = new File("src\\student_management_program\\Data\\person.csv");
+public class ReadAndWriteFileStudent {
+    public static List<Student> readFile() throws IOException {
+        File file = new File("src\\student_management_program\\Data\\student.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-        List<Person> personList = new ArrayList<>();
+        List<Student> studentList = new ArrayList<>();
         String line;
         while ((line = bufferedReader.readLine())!= null){
             String[] arr = line.split(",");
-            Person person = new Person(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3]);
-            personList.add(person);
+            Student student = new Student(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3],arr[4],Double.parseDouble(arr[5]));
+            studentList.add(student);
         }
         bufferedReader.close();
-        return personList;
+        return studentList;
     }
-    public static void writeFile(List<Person>list) throws IOException {
-        File file = new File("src\\student_management_program\\Data\\person.csv");
-        FileWriter fileWriter = new FileWriter(file);
+    public static void writeFile(List<Student>list) throws IOException {
+        File file = new File("src\\student_management_program\\Data\\student.csv");
+        FileWriter fileWriter = new FileWriter(file,false);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        for (Person person: list) {
-            bufferedWriter.write(person.getInfo());
+        for (Student student: list) {
+            bufferedWriter.write(student.getInfo());
             bufferedWriter.newLine();
         }
         bufferedWriter.flush();

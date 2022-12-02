@@ -1,14 +1,11 @@
 package vehicle_management.Utils;
 
 import vehicle_management.Models.Car;
-import vehicle_management.Models.Motorcycle;
-import vehicle_management.Models.Truck;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WriteAndReadFile {
+public class WriteAndReadFileCar {
     // public static void readFile(String path) {
 //        File file = new File(path);
 //        BufferedReader bufferedReader = null;
@@ -82,52 +79,12 @@ public class WriteAndReadFile {
                 bufferedWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        }
-    }
-
-    public static void writeFileTruck(String path, List<Truck> list) {
-        File file = new File(path);
-        BufferedWriter bufferedWriter = null;
-        try {
-            FileWriter fileWriter = new FileWriter(file);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            for (Truck truck : list) {
-                bufferedWriter.write(truck.convertLine());
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                bufferedWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void writeFileMotorcycle(String path, List<Motorcycle> list) {
-        File file = new File(path);
-        BufferedWriter bufferedWriter = null;
-        try {
-            FileWriter fileWriter = new FileWriter(file);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            for (Motorcycle motorcycle : list) {
-                bufferedWriter.write(motorcycle.toString());
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                bufferedWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            }finally {
+                try {
+                    bufferedWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

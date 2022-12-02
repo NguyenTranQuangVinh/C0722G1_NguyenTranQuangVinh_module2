@@ -9,7 +9,7 @@ public class CountWordByTreeMap {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Moi ban nhap chuoi: ");
         String str = scanner.nextLine();
-        String[] word = str.toLowerCase().split("");
+        String[] word = str.toLowerCase().split(" ");
         Map<String,Integer> map = new TreeMap<>();
         for (String i : word){
             if (!map.containsKey(i)){

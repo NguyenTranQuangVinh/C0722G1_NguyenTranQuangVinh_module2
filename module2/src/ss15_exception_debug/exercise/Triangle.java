@@ -9,44 +9,48 @@ public class Triangle {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Triangle triangle = new Triangle();
         while (true) {
             try {
                 System.out.println("Nhập cạnh A: ");
                 sideA = Double.parseDouble(scanner.nextLine());
-                checkSide(sideA);
+                triangle.checkSide(sideA);
                 break;
-            } catch (IllegalArgumentException | IllegalTriangleException e) {
-                e.printStackTrace();
+            } catch (IllegalTriangleException e) {
                 System.out.println(e.getMessage());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                System.out.println("cạnh sai định dạng");
             }
         }
         while (true) {
             try {
-                System.out.println("Nhập cạnh B: ");
+                System.out.println("Nhập cạnh b: ");
                 sideB = Double.parseDouble(scanner.nextLine());
-                if (sideB < 0) {
-                    throw new IllegalArgumentException("Chiều dài cạnh sai");
-                }
+                triangle.checkSide(sideB);
                 break;
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalTriangleException e) {
                 System.out.println(e.getMessage());
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Cạnh sai định dạng");
             }
         }
+
+        while (true){
+            try{
+                System.out.print("Nhap cạnh C: ");
+                sideC = Double.parseDouble(scanner.nextLine());
+                triangle.checkSide(sideC);
+                break;
+            } catch (IllegalTriangleException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
         try {
-            checkTriangle(sideC, sideB, sideA);
+            triangle.checkTriangle(sideC, sideB, sideA);
         } catch (IllegalArgumentException | IllegalTriangleException e) {
             System.out.println(e.getMessage());
         }
     }
 
     static void checkSide(double e) throws IllegalTriangleException {
-        if (e < 0) {
+        if (e <= 0) {
             throw new IllegalTriangleException("Chiều dài cạnh sai");
         }
     }
@@ -55,7 +59,7 @@ public class Triangle {
         double sumAB = sideA + sideB;
         double sumAC = sideA + sideC;
         double sumBC = sideB + sideC;
-        if (c > sumAB || b > sumAC || a > sumBC) {
+        if (c >= sumAB || b >= sumAC || a >= sumBC) {
             throw new IllegalTriangleException("Đây không phải 3 cạnh tam giác");
         } else {
             System.out.println("Đây là 3 cạnh tam giác");

@@ -1,4 +1,4 @@
-package ss2_loop_and_array.practice.practice2;
+package ss2_ss3_loop_and_array.practice.practice2;
 
 import java.util.Scanner;
 

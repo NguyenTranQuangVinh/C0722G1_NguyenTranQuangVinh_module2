@@ -1,4 +1,4 @@
-package ss2_loop_and_array.exercise.exercise6;
+package ss2_ss3_loop_and_array.exercise.exercise6;
 import java.util.Arrays;
 public class ArrayMerge {
     public static void main(String[] args) {

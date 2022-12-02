@@ -1,4 +1,4 @@
-package ss2_loop_and_array.exercise.exercise7;
+package ss2_ss3_loop_and_array.exercise.exercise7;
 
 public class FindTheLargestElementInATwoDimensionalArray {
     public static void main(String[] args) {

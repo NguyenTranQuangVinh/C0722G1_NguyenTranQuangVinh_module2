@@ -1,4 +1,4 @@
-package ss3_class_and_object.practice.practice1;
+package ss4_class_and_object.practice.practice1;
 
 public class Rectangle {
 

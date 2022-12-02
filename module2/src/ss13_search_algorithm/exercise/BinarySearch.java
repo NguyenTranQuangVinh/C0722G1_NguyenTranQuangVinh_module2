@@ -14,18 +14,19 @@ public class BinarySearch {
             arr[i] = Integer.parseInt(scanner.nextLine());
         }
         Arrays.sort(arr);
-        System.out.println(binarySearch(arr,5,0,arr.length-1));
+        System.out.println(binarySearch(arr, 5, 0, arr.length - 1));
     }
-    public static int binarySearch (int[] array, int value , int left, int right){
-        if (right >= left){
-            int mid = (left + right )/2;
-            if (array[mid] == value){
+
+    public static int binarySearch(int[] array, int value, int left, int right) {
+        if (right >= left) {
+            int mid = (left + right) / 2;
+            if (array[mid] == value) {
                 return mid;
             }
-            if (value > array[mid]){
-                return binarySearch(array,value ,mid+1, right );
+            if (value > array[mid]) {
+                return binarySearch(array, value, mid + 1, right);
             }
-            return binarySearch(array, value,left, mid-1);
+            return binarySearch(array, value, left, mid - 1);
         }
         return -1;
     }

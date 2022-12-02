@@ -1,4 +1,4 @@
-package ss2_loop_and_array.practice.practice9;
+package ss2_ss3_loop_and_array.practice.practice9;
 
 public class FindMinimumValueInArrayUsingMethod {
     public static void main(String[] args) {

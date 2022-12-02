@@ -1,4 +1,4 @@
-package ss2_loop_and_array.practice.practice4;
+package ss2_ss3_loop_and_array.practice.practice4;
 import java.util.Scanner;
 public class DesignMenusForApps {
     public static void main(String[] args) {
