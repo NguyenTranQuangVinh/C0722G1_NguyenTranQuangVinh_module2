@@ -1,4 +1,10 @@
 package FuramaResort.Services;
 
-public interface EmployeeService {
+public interface IEmployeeService {
+    void displayEmployee();
+
+    void addEmployee();
+
+    void deleteEmployee();
+
 }

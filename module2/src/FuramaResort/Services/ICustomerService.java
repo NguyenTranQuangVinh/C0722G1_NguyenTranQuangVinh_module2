@@ -1,4 +1,9 @@
 package FuramaResort.Services;
 
-public interface CustomerService {
+public interface ICustomerService {
+    void displayCustomer();
+
+    void addCustomer();
+
+
 }

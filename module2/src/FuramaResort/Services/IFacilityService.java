@@ -1,4 +1,11 @@
 package FuramaResort.Services;
 
-public interface FacilityService {
+public interface IFacilityService {
+    void displayFacility();
+
+    void displayMaintenance();
+
+    void addRoom();
+
+    void addVilla();
 }

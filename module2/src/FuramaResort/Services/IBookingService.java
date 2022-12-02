@@ -1,4 +1,4 @@
 package FuramaResort.Services;
 
-public interface BookingService {
+public interface IBookingService {
 }
