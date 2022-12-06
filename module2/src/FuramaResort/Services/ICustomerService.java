@@ -6,4 +6,5 @@ public interface ICustomerService {
     void addCustomer();
 
 
+    void editCustomer();
 }

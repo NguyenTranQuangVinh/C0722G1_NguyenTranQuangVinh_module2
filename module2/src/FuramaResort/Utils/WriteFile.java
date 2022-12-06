@@ -1,5 +1,6 @@
 package FuramaResort.Utils;
 
+import FuramaResort.Models.Customer;
 import FuramaResort.Models.Employee;
 
 import java.io.BufferedWriter;
@@ -30,5 +31,25 @@ public class WriteFile {
             }
         }
     }
-//    public static
+    public static void writeFileCustomer(String path, List<Customer>list){
+        File file = new File(path);
+        BufferedWriter bufferedWriter = null;
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            bufferedWriter=new BufferedWriter(fileWriter);
+            for (Customer customer: list) {
+                bufferedWriter.write(customer.convertLine());
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

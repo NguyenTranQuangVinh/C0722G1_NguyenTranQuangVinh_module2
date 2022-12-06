@@ -7,4 +7,5 @@ public interface IEmployeeService {
 
     void deleteEmployee();
 
+    void editEmployee();
 }

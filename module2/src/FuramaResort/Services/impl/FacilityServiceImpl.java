@@ -5,7 +5,6 @@ import FuramaResort.Models.Room;
 import FuramaResort.Models.Villa;
 import FuramaResort.Services.IFacilityService;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -53,12 +52,12 @@ public class FacilityServiceImpl implements IFacilityService {
     @Override
     public void addVilla() {
         Villa villa = new Villa();
-        System.out.println("Vui lòng điền thông tin sau: ");
-        System.out.println("Tên dịch vụ:");
+        System.out.println("Vui lòng điền thông tin sau : ");
+        System.out.println("Tên dịch vụ :");
         villa.setNameService(scanner.nextLine());
-        System.out.println("Diện tích sử dụng:");
+        System.out.println("Diện tích sử dụng :");
         villa.setArea(Double.parseDouble(scanner.nextLine()));
-        System.out.println("Chi phí thuê:");
+        System.out.println("Chi phí thuê :");
         villa.setCosts(Integer.parseInt(scanner.nextLine()));
         System.out.println("Số lượng người tối đa:");
         villa.setAmount(Integer.parseInt(scanner.nextLine()));
