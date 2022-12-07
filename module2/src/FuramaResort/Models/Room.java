@@ -25,4 +25,8 @@ public class Room extends Facility {
                 "freeServiceIncluded='" + freeServiceIncluded + '\'' +
                 '}';
     }
+    public String convertLine(){
+        String comma=",";
+        return super.convertLine()+comma+this.freeServiceIncluded;
+    }
 }

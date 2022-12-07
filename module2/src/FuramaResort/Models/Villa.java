@@ -8,7 +8,7 @@ public class Villa extends Facility {
     public Villa() {
     }
 
-    public Villa(String nameService, Double area, int costs, int amount, String rentalType, String roomStandard, double poolArea, int numberOfFloors) {
+    public Villa(String nameService, Double area, int costs, int amount, String rentalType, String roomStandard, Double poolArea, int numberOfFloors) {
         super(nameService, area, costs, amount, rentalType);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
@@ -46,5 +46,9 @@ public class Villa extends Facility {
                 ", poolArea=" + poolArea +
                 ", numberOfFloors=" + numberOfFloors +
                 '}';
+    }
+    public String convertLine() {
+        String comma = ",";
+        return super.convertLine()+comma+this.roomStandard+comma+poolArea+comma+numberOfFloors;
     }
 }

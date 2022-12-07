@@ -67,4 +67,8 @@ public abstract class Facility {
                 ", amount=" + amount +
                 ", rentalType='" + rentalType + '\'';
     }
+    public String convertLine(){
+        String comma=",";
+        return this.nameService+comma+this.area+comma+this.costs+comma+this.amount+comma+this.rentalType;
+    }
 }

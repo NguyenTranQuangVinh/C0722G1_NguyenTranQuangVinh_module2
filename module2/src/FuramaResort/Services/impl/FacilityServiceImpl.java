@@ -29,6 +29,19 @@ public class FacilityServiceImpl implements IFacilityService {
             }
         }
     }
+//    public void getRoomList(){
+//
+//    }
+//    Map<Villa,Integer> getListMap(){
+//
+//        return null;
+//    }
+//    Map<Room,Integer> getListRoom(){
+//
+//    }
+//    Map<Facility,Integer> getListFacility(){
+//
+//    }
 
     @Override
     public void addRoom() {
