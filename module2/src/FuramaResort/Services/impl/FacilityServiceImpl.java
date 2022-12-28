@@ -4,6 +4,8 @@ import FuramaResort.Models.Facility;
 import FuramaResort.Models.Room;
 import FuramaResort.Models.Villa;
 import FuramaResort.Services.IFacilityService;
+import FuramaResort.Utils.ReadFile;
+import FuramaResort.Utils.WriteFile;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,40 +13,48 @@ import java.util.Scanner;
 
 public class FacilityServiceImpl implements IFacilityService {
     Scanner scanner = new Scanner(System.in);
-    LinkedHashMap<Facility,Integer> linkedHashMap= new LinkedHashMap<>();
+    //    private static final Map<Facility, Integer> readFacility = new LinkedHashMap<>();
+    //    Map<Facility, Integer> linkedHashMap = new LinkedHashMap<>();
+    Map<Facility, Integer> readFacility = new LinkedHashMap<>();
+    final String PATH_ROOM = "src\\FuramaResort\\Data\\room.csv";
+    final String PATH_VILLA = "src\\FuramaResort\\Data\\villa.csv";
+
+    public void writeFileRoom(Map<Room, Integer> integerMap) {
+        WriteFile.writeFileRoom(PATH_ROOM, integerMap);
+    }
+
+    public void writeFileVilla(Map<Villa, Integer> integerMap) {
+        WriteFile.writeFileVilla(PATH_VILLA, integerMap);
+    }
+
     @Override
     public void displayFacility() {
-        for (Map.Entry<Facility,Integer> map: linkedHashMap.entrySet()) {
-            System.out.println(map.getKey().toString()+","+map.getValue());
+        Map<Villa, Integer> villaIntegerMap = ReadFile.readFileVillaMap(PATH_VILLA);
+        readFacility.putAll(villaIntegerMap);
+        Map<Room, Integer> roomIntegerMap = ReadFile.readFileRoomMap(PATH_ROOM);
+        readFacility.putAll(roomIntegerMap);
+        for (Map.Entry<Facility, Integer> map : readFacility.entrySet()) {
+            System.out.println(map.getKey().toString() + "," + map.getValue());
         }
     }
 
 
     @Override
     public void displayMaintenance() {
-        for (Map.Entry<Facility, Integer>map:linkedHashMap.entrySet()
-             ) {
-            if (map.getValue()>=5){
-                System.out.println(map.getKey().toString()+","+map.getValue());
+        Map<Villa, Integer> villaIntegerMap = ReadFile.readFileVillaMap(PATH_VILLA);
+        readFacility.putAll(villaIntegerMap);
+        Map<Room, Integer> roomIntegerMap = ReadFile.readFileRoomMap(PATH_ROOM);
+        readFacility.putAll(roomIntegerMap);
+        for (Map.Entry<Facility, Integer> map : readFacility.entrySet()) {
+            if (map.getValue() >= 5) {
+                System.out.println(map.getKey().toString() + "," + map.getValue());
             }
         }
     }
-//    public void getRoomList(){
-//
-//    }
-//    Map<Villa,Integer> getListMap(){
-//
-//        return null;
-//    }
-//    Map<Room,Integer> getListRoom(){
-//
-//    }
-//    Map<Facility,Integer> getListFacility(){
-//
-//    }
 
     @Override
     public void addRoom() {
+        Map<Room, Integer> roomIntegerMap = ReadFile.readFileRoomMap(PATH_ROOM);
         Room room = new Room();
         System.out.println("Vui lòng điền thông tin sau: ");
         System.out.println("Tên dịch vụ:");
@@ -59,11 +69,13 @@ public class FacilityServiceImpl implements IFacilityService {
         room.setRentalType(scanner.nextLine());
         System.out.println("Dịch vụ miễn phí đi kèm: ");
         room.setFreeServiceIncluded(scanner.nextLine());
-
+        roomIntegerMap.put(room, 0);
+        writeFileRoom(roomIntegerMap);
     }
 
     @Override
     public void addVilla() {
+        Map<Villa, Integer> villaIntegerMap = ReadFile.readFileVillaMap(PATH_VILLA);
         Villa villa = new Villa();
         System.out.println("Vui lòng điền thông tin sau : ");
         System.out.println("Tên dịch vụ :");
@@ -82,6 +94,7 @@ public class FacilityServiceImpl implements IFacilityService {
         villa.setPoolArea(Double.parseDouble(scanner.nextLine()));
         System.out.println("Sô tầng:");
         villa.setNumberOfFloors(Integer.parseInt(scanner.nextLine()));
+        villaIntegerMap.put(villa, 0);
+        writeFileVilla(villaIntegerMap);
     }
-
 }

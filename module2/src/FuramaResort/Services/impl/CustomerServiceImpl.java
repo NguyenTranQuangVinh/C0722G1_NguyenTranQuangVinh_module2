@@ -13,10 +13,6 @@ public class CustomerServiceImpl implements ICustomerService {
 //    public static ArrayList<Customer> customerArrayList = new ArrayList<>();
     final String PATH_CUSTOMER = "src\\FuramaResort\\Data\\customer.csv";
 
-
-
-
-
     public void writeFile(List<Customer>customerArrayList) {
         WriteFile.writeFileCustomer(PATH_CUSTOMER, customerArrayList);
     }

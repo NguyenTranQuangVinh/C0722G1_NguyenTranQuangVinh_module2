@@ -9,8 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class WriteFile {
     public static void writeFileEmployee(String path, List<Employee> list) {
@@ -57,29 +56,60 @@ public class WriteFile {
         }
     }
 
-    public void writeFile(String filePath, List<String> strings) {
-        FileWriter fileWriter=null;
-        BufferedWriter bufferedWriter = null;
+    public static void writeFileRoom(String filePath, Map<Room,Integer> roomIntegerMap) {
+        FileWriter fileWriter = null;
+        BufferedWriter  bufferedWriter=null;
         try {
-             fileWriter= new FileWriter(filePath);
+            fileWriter = new FileWriter(filePath);
             bufferedWriter = new BufferedWriter(fileWriter);
-            for (String line : strings) {
-                bufferedWriter.write(line);
+            for (Map.Entry<Room,Integer>entry:roomIntegerMap.entrySet()) {
+                bufferedWriter.write(entry.getKey().convertLine()+","+entry.getValue());
                 bufferedWriter.newLine();
+                bufferedWriter.flush();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+public static void writeFileVilla(String filePath, Map<Villa,Integer>villaIntegerMap){
+        FileWriter fileWriter = null;
+    BufferedWriter bufferedWriter=null;
+    try {
+        fileWriter=new FileWriter(filePath);
+        bufferedWriter = new BufferedWriter(fileWriter);
+        for (Map.Entry<Villa,Integer>entry:villaIntegerMap.entrySet()) {
+            bufferedWriter.write(entry.getKey().convertLine()+","+entry.getValue());
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }finally {
+        try {
             bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void writeVilla(String filePath, List<Villa> villaList){
-        List<String> strings = new ArrayList<>();
-        villaList.forEach(villa -> strings.add(villa.convertLine()));
-        writeFile(filePath,strings);
-    }
-    public void writeRoom(String filePath, List<Room>roomList){
-        List<String> strings = new ArrayList<>();
-        roomList.forEach(room -> strings.add(room.convertLine()));
-        writeFile(filePath,strings);
-    }
+
+}
+//    public void writeVilla(String filePath, LinkedHashMap<Villa,Integer> villaMap) {
+//        List<String> strings = new ArrayList<>();
+////        Set<Villa> villaSet = villaMap.keySet();
+//        villaMap.forEach(villa -> strings.add(villa.convertLine()));
+//        writeFile(filePath, strings);
+//    }
+//
+//    public void writeRoom(String filePath, LinkedHashMap<Room,Integer> roomMap) {
+//        List<String> strings = new ArrayList<>();
+////        Set<Room> roomSet = roomMap.keySet();
+//        roomMap.forEach(room -> strings.add(room.convertLine()));
+//        writeFile(filePath, strings);
+//    }
 }

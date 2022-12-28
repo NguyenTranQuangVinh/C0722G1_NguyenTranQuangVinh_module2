@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     Scanner scanner = new Scanner(System.in);
-//    public static ArrayList<Employee> employeeArrayList = new ArrayList<>();
+    //    public static ArrayList<Employee> employeeArrayList = new ArrayList<>();
     final String PATH_EMPLOYEE = "src\\FuramaResort\\Data\\employee.csv";
 
 
@@ -84,8 +84,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
         List<Employee> employees = ReadFile.readFileEmployee(PATH_EMPLOYEE);
         System.out.println("Nhập vào mã nhân viên muốn sửa:");
         int id = Integer.parseInt(scanner.nextLine());
-        for (Employee employee : employees){
-            if (employee.getEmployeeCode()==id){
+        for (Employee employee : employees) {
+            if (employee.getEmployeeCode() == id) {
                 System.out.println("Nhập lại mã nhân viên mới:");
                 employee.setEmployeeCode(Integer.parseInt(scanner.nextLine()));
                 System.out.println("Nhập lại tên mới: ");
