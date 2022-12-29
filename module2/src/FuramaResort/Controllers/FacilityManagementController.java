@@ -1,5 +1,6 @@
 package FuramaResort.Controllers;
 
+import FuramaResort.Services.IFacilityService;
 import FuramaResort.Services.impl.FacilityServiceImpl;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class FacilityManagementController {
     Scanner scanner = new Scanner(System.in);
     int choice;
-    FacilityServiceImpl iFacilityService = new FacilityServiceImpl();
+    IFacilityService iFacilityService = new FacilityServiceImpl();
     public void displayMenuFacility(){
         do {
             System.out.println("1\tDisplay list facility\n" +

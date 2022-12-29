@@ -1,12 +1,13 @@
 package FuramaResort.Controllers;
 
+import FuramaResort.Services.ICustomerService;
 import FuramaResort.Services.impl.CustomerServiceImpl;
 import java.util.Scanner;
 
 public class CustomerManagementController {
     Scanner scanner = new Scanner(System.in);
     int choice;
-    CustomerServiceImpl iCustomerService = new CustomerServiceImpl();
+    ICustomerService iCustomerService = new CustomerServiceImpl();
 
     public void displayMenuCustomer() {
         do {

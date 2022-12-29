@@ -8,7 +8,7 @@ public class FuramaController {
         EmployeeManagementController employeeManagementController = new EmployeeManagementController();
         CustomerManagementController customerManagementController = new CustomerManagementController();
         FacilityManagementController facilityManagementController = new FacilityManagementController();
-
+        BookingManagementController bookingManagementController = new BookingManagementController();
         int choice;
         do {
             System.out.println("1.\tEmployee Management\n" +
@@ -32,9 +32,7 @@ public class FuramaController {
                        facilityManagementController.displayMenuFacility();
                         break;
                     case 4:
-                        System.out.println("1.\tAdd new booking\n" +
-                                "2.\tDisplay list booking\n" +
-                                "3.\tReturn main menu\n");
+                        bookingManagementController.displayMenuBooking();
                         break;
                     case 5:
                         System.out.println("1.\tDisplay list customers use service\n" +

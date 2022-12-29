@@ -1,12 +1,13 @@
 package FuramaResort.Controllers;
 
+import FuramaResort.Services.IEmployeeService;
 import FuramaResort.Services.impl.EmployeeServiceImpl;
 import java.util.Scanner;
 
 public class EmployeeManagementController {
     Scanner scanner = new Scanner(System.in);
     int choice;
-    EmployeeServiceImpl iEmployeeService = new EmployeeServiceImpl();
+    IEmployeeService iEmployeeService = new EmployeeServiceImpl();
 
     public void displaymenuEmployeement() {
 
