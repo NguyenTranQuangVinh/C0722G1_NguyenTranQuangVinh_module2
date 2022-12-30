@@ -2,14 +2,14 @@ package FuramaResort.Models;
 
 public class Villa extends Facility {
     private String roomStandard;
-    private Double poolArea;
+    private double poolArea;
     private int numberOfFloors;
 
     public Villa() {
     }
 
-    public Villa(String nameService, Double area, int costs, int amount, String rentalType, String roomStandard, Double poolArea, int numberOfFloors) {
-        super(nameService, area, costs, amount, rentalType);
+    public Villa(String idService, String nameService, double area, double costs, int amount, String rentalType, String roomStandard, double poolArea, int numberOfFloors) {
+        super(idService, nameService, area, costs, amount, rentalType);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.numberOfFloors = numberOfFloors;
@@ -27,7 +27,7 @@ public class Villa extends Facility {
         return poolArea;
     }
 
-    public void setPoolArea(Double poolArea) {
+    public void setPoolArea(double poolArea) {
         this.poolArea = poolArea;
     }
 
@@ -41,14 +41,15 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return "Villa{" +super.toString()+
+        return "Villa{" + super.toString() +
                 "roomStandard='" + roomStandard + '\'' +
                 ", poolArea=" + poolArea +
                 ", numberOfFloors=" + numberOfFloors +
                 '}';
     }
+
     public String convertLine() {
-        String comma = ",";
-        return super.convertLine()+comma+this.roomStandard+comma+poolArea+comma+numberOfFloors;
+        String COMMA = ",";
+        return super.convertLine() + COMMA + this.roomStandard + COMMA + poolArea + COMMA + numberOfFloors;
     }
 }

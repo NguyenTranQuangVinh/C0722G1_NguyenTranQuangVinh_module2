@@ -50,7 +50,7 @@ public class Customer extends Person {
     }
 
     public String convertLine() {
-        String comma = ",";
-        return this.customerCode + comma + super.convertLine() + comma + this.typeOfGuest + comma + this.address;
+        String COMMA = ",";
+        return this.customerCode + COMMA + super.convertLine() + COMMA + this.typeOfGuest + COMMA + this.address;
     }
 }

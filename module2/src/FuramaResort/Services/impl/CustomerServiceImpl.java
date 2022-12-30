@@ -2,7 +2,9 @@ package FuramaResort.Services.impl;
 
 import FuramaResort.Models.Customer;
 import FuramaResort.Services.ICustomerService;
+import FuramaResort.Utils.ExceptionHandling;
 import FuramaResort.Utils.ReadFile;
+import FuramaResort.Utils.Regex;
 import FuramaResort.Utils.WriteFile;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.Scanner;
 
 public class CustomerServiceImpl implements ICustomerService {
     Scanner scanner = new Scanner(System.in);
+    private ExceptionHandling exceptionHandling = new ExceptionHandling();
+    private Regex regex = new Regex();
 //    public static ArrayList<Customer> customerArrayList = new ArrayList<>();
     final String PATH_CUSTOMER = "src\\FuramaResort\\Data\\customer.csv";
 
@@ -31,23 +35,23 @@ public class CustomerServiceImpl implements ICustomerService {
         Customer customer = new Customer();
         System.out.println("Vui lòng điền thông tin sau:");
         System.out.println("Mã khách hàng:");
-        customer.setCustomerCode(Integer.parseInt(scanner.nextLine()));
+        customer.setCustomerCode(exceptionHandling.enterPositiveInteger());
         System.out.println("Họ và tên:");
-        customer.setFullName(scanner.nextLine());
+        customer.setFullName(regex.enterWord());
         System.out.println("Ngày sinh:");
         customer.setDateOfBirth((scanner.nextLine()));
         System.out.println("Giới Tính: ");
-        customer.setGender(scanner.nextLine());
+        customer.setGender(regex.enterWord());
         System.out.println("số chứng minh nhân dân:");
-        customer.setIdentityCardNumber(Integer.parseInt(scanner.nextLine()));
+        customer.setIdentityCardNumber(exceptionHandling.enterPositiveInteger());
         System.out.println("số điện thoại: ");
-        customer.setPhoneNumber(Integer.parseInt(scanner.nextLine()));
+        customer.setPhoneNumber(exceptionHandling.enterPositiveInteger());
         System.out.println("email: ");
-        customer.setEmail(scanner.nextLine());
+        customer.setEmail(regex.enterEmail());
         System.out.println("Loại khách: ");
-        customer.setTypeOfGuest(scanner.nextLine());
+        customer.setTypeOfGuest(scanner.nextLine());//thiếu regex
         System.out.println("Địa chỉ: ");
-        customer.setAddress(scanner.nextLine());
+        customer.setAddress(regex.enterWord());
         customers.add(customer);
         writeFile(customers);
     }
@@ -60,23 +64,23 @@ public class CustomerServiceImpl implements ICustomerService {
         for (Customer customer:customers) {
             if (customer.getCustomerCode()==id){
                 System.out.println("Nhập lại mã khách hàng mới: ");
-                customer.setCustomerCode(Integer.parseInt(scanner.nextLine()));
+                customer.setCustomerCode(exceptionHandling.enterPositiveInteger());
                 System.out.println("Nhập lại họ tên khách hàng mới: ");
-                customer.setFullName(scanner.nextLine());
+                customer.setFullName(regex.enterWord());
                 System.out.println("Nhập lại ngày tháng năm khách hàng mới: ");
                 customer.setDateOfBirth(scanner.nextLine());
                 System.out.println("Nhập lại giới tính khách hàng mới: ");
-                customer.setGender(scanner.nextLine());
+                customer.setGender(regex.enterWord());
                 System.out.println("Nhập lại số CMND mới khách hàng mới: ");
-                customer.setIdentityCardNumber(Integer.parseInt(scanner.nextLine()));
+                customer.setIdentityCardNumber(exceptionHandling.enterPositiveInteger());
                 System.out.println("Nhập lại số điện thoại khách hàng mới: ");
-                customer.setPhoneNumber(Integer.parseInt(scanner.nextLine()));
+                customer.setPhoneNumber(exceptionHandling.enterPositiveInteger());
                 System.out.println("Nhập lại email khách hàng mới: ");
-                customer.setEmail(scanner.nextLine());
-                System.out.println("Nhập lại loại khách hàng mới: ");
+                customer.setEmail(regex.enterEmail());
+                System.out.println("Nhập lại loại khách hàng mới: ");//thiếu regex
                 customer.setTypeOfGuest(scanner.nextLine());
                 System.out.println("Nhập lại địa chỉ khách hàng mới: ");
-                customer.setAddress(scanner.nextLine());
+                customer.setAddress(regex.enterWord());
                 writeFile(customers);
                 return;
             }

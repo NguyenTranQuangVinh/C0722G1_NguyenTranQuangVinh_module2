@@ -18,7 +18,7 @@ public class ReadFile {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] info = line.split(",");
-                    Employee employee = new Employee(Integer.parseInt(info[0]), info[1], info[2], info[3], Integer.parseInt(info[4]), Integer.parseInt(info[5]), info[6], info[7], info[8], Integer.parseInt(info[9]));
+                    Employee employee = new Employee(Integer.parseInt(info[0]), info[1], info[2], info[3], Integer.parseInt(info[4]), Integer.parseInt(info[5]), info[6], info[7], info[8], Double.parseDouble(info[9]));
                     employeeList.add(employee);
                 }
             } catch (FileNotFoundException e) {
@@ -93,7 +93,6 @@ public class ReadFile {
     public static Map<Room, Integer> readFileRoomMap(String path) {
         Map<Room, Integer> roomMap = new LinkedHashMap<>();
         File file = new File(path);
-
         if (file.exists()) {
             BufferedReader bufferedReader = null;
 //            int value = 0;
@@ -103,7 +102,7 @@ public class ReadFile {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] info = line.split(",");
-                    Room room = new Room(info[0], Double.parseDouble(info[1]), Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4], info[5]);
+                    Room room = new Room(info[0], info[1],Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6]);
                     roomMap.put(room, 0);
                 }
             } catch (FileNotFoundException e) {
@@ -135,7 +134,7 @@ public class ReadFile {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] info = line.split(",");
-                    Villa villa = new Villa(info[0], Double.parseDouble(info[1]), Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4], info[5], Double.parseDouble(info[6]), Integer.parseInt(info[7]));
+                    Villa villa = new Villa(info[0],info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6], Double.parseDouble(info[7]), Integer.parseInt(info[8]));
                     villaMap.put(villa, 0);
                 }
             } catch (FileNotFoundException e) {

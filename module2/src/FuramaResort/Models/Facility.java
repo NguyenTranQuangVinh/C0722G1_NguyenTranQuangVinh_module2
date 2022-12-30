@@ -1,21 +1,31 @@
 package FuramaResort.Models;
 
 public abstract class Facility {
+    private String idService;
     private String nameService;
-    private Double area;
-    private int costs;
+    private double area;
+    private double costs;
     private int amount;
     private String rentalType;
 
     public Facility() {
     }
 
-    protected Facility(String nameService, Double area, int costs, int amount, String rentalType) {
+    public Facility(String idService, String nameService, double area, double costs, int amount, String rentalType) {
+        this.idService = idService;
         this.nameService = nameService;
         this.area = area;
         this.costs = costs;
         this.amount = amount;
         this.rentalType = rentalType;
+    }
+
+    public String getIdService() {
+        return idService;
+    }
+
+    public void setIdService(String idService) {
+        this.idService = idService;
     }
 
     public String getNameService() {
@@ -30,7 +40,7 @@ public abstract class Facility {
         return area;
     }
 
-    public void setArea(Double area) {
+    public void setArea(double area) {
         this.area = area;
     }
 
@@ -38,7 +48,7 @@ public abstract class Facility {
         return costs;
     }
 
-    public void setCosts(int costs) {
+    public void setCosts(double costs) {
         this.costs = costs;
     }
 
@@ -60,15 +70,18 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return
-                "nameService='" + nameService + '\'' +
+        return "Facility{" +
+                "idService='" + idService + '\'' +
+                ", nameService='" + nameService + '\'' +
                 ", area=" + area +
                 ", costs=" + costs +
                 ", amount=" + amount +
-                ", rentalType='" + rentalType + '\'';
+                ", rentalType='" + rentalType + '\'' +
+                '}';
     }
+
     public String convertLine(){
-        String comma=",";
-        return this.nameService+comma+this.area+comma+this.costs+comma+this.amount+comma+this.rentalType;
+        String COMMA=",";
+        return this.idService+COMMA+ this.nameService+COMMA+this.area+COMMA+this.costs+COMMA+this.amount+COMMA+this.rentalType;
     }
 }

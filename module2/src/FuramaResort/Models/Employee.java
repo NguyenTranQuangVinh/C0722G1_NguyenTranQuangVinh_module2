@@ -4,12 +4,12 @@ public class Employee extends Person {
     private int employeeCode;
     private String level;
     private String position;
-    private int wage;
+    private Double wage;
 
     public Employee() {
 
     }
-    public Employee(int employeeCode, String fullName, String dateOfBirth, String gender, int identityCardNumber, int phoneNumber, String email, String level, String position, int wage) {
+    public Employee(int employeeCode, String fullName, String dateOfBirth, String gender, int identityCardNumber, int phoneNumber, String email, String level, String position, Double wage) {
         super(fullName, dateOfBirth, gender, identityCardNumber, phoneNumber, email);
         this.employeeCode = employeeCode;
         this.level = level;
@@ -41,11 +41,11 @@ public class Employee extends Person {
         this.position = position;
     }
 
-    public int getWage() {
+    public Double getWage() {
         return wage;
     }
 
-    public void setWage(int wage) {
+    public void setWage(Double wage) {
         this.wage = wage;
     }
 
@@ -59,8 +59,8 @@ public class Employee extends Person {
                 '}';
     }
     public String convertLine() {
-        String comma = ",";
-        return this.employeeCode  + comma + super.convertLine()+ comma + this.level + comma + position + comma + wage;
+        String COMMA = ",";
+        return this.employeeCode  + COMMA + super.convertLine()+ COMMA + this.level + COMMA + position + COMMA + wage;
     }
 
 }

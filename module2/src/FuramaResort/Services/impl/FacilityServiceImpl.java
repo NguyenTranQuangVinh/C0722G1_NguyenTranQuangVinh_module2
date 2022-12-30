@@ -4,18 +4,20 @@ import FuramaResort.Models.Facility;
 import FuramaResort.Models.Room;
 import FuramaResort.Models.Villa;
 import FuramaResort.Services.IFacilityService;
+import FuramaResort.Utils.ExceptionHandling;
 import FuramaResort.Utils.ReadFile;
+import FuramaResort.Utils.Regex;
 import FuramaResort.Utils.WriteFile;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class FacilityServiceImpl implements IFacilityService {
     Scanner scanner = new Scanner(System.in);
+    private ExceptionHandling exceptionHandling = new ExceptionHandling();
+    private Regex regex = new Regex();
     //    private static final Map<Facility, Integer> readFacility = new LinkedHashMap<>();
     //    Map<Facility, Integer> linkedHashMap = new LinkedHashMap<>();
-    Map<Facility, Integer> readFacility = new LinkedHashMap<>();
+
     final String PATH_ROOM = "src\\FuramaResort\\Data\\room.csv";
     final String PATH_VILLA = "src\\FuramaResort\\Data\\villa.csv";
 
@@ -29,6 +31,7 @@ public class FacilityServiceImpl implements IFacilityService {
 
     @Override
     public void displayFacility() {
+        Map<Facility, Integer> readFacility = new LinkedHashMap<>();
         Map<Villa, Integer> villaIntegerMap = ReadFile.readFileVillaMap(PATH_VILLA);
         readFacility.putAll(villaIntegerMap);
         Map<Room, Integer> roomIntegerMap = ReadFile.readFileRoomMap(PATH_ROOM);
@@ -41,6 +44,7 @@ public class FacilityServiceImpl implements IFacilityService {
 
     @Override
     public void displayMaintenance() {
+        Map<Facility,Integer> readFacility = new LinkedHashMap<>();
         Map<Villa, Integer> villaIntegerMap = ReadFile.readFileVillaMap(PATH_VILLA);
         readFacility.putAll(villaIntegerMap);
         Map<Room, Integer> roomIntegerMap = ReadFile.readFileRoomMap(PATH_ROOM);
@@ -57,14 +61,16 @@ public class FacilityServiceImpl implements IFacilityService {
         Map<Room, Integer> roomIntegerMap = ReadFile.readFileRoomMap(PATH_ROOM);
         Room room = new Room();
         System.out.println("Vui lòng điền thông tin sau: ");
+        System.out.println("mã dịch vụ:");
+        room.setIdService(regex.enterRoomInfo());
         System.out.println("Tên dịch vụ:");
-        room.setNameService(scanner.nextLine());
+        room.setNameService(regex.enterServiceInfo());
         System.out.println("Diện tích sử dụng:");
-        room.setArea(Double.parseDouble(scanner.nextLine()));
+        room.setArea(exceptionHandling.enterArea());
         System.out.println("Chi phí thuê:");
-        room.setCosts(Integer.parseInt(scanner.nextLine()));
+        room.setCosts(exceptionHandling.enterDouble());
         System.out.println("Số lượng người tối đa:");
-        room.setAmount(Integer.parseInt(scanner.nextLine()));
+        room.setAmount(exceptionHandling.enterNumberOfPeople());
         System.out.println("Kiểu thuê:");
         room.setRentalType(scanner.nextLine());
         System.out.println("Dịch vụ miễn phí đi kèm: ");
@@ -78,22 +84,24 @@ public class FacilityServiceImpl implements IFacilityService {
         Map<Villa, Integer> villaIntegerMap = ReadFile.readFileVillaMap(PATH_VILLA);
         Villa villa = new Villa();
         System.out.println("Vui lòng điền thông tin sau : ");
+        System.out.println("Mã dịch vụ:");
+        villa.setIdService(regex.enterVillaInfo());
         System.out.println("Tên dịch vụ :");
-        villa.setNameService(scanner.nextLine());
+        villa.setNameService(regex.enterServiceInfo());
         System.out.println("Diện tích sử dụng :");
-        villa.setArea(Double.parseDouble(scanner.nextLine()));
+        villa.setArea(exceptionHandling.enterArea());
         System.out.println("Chi phí thuê :");
-        villa.setCosts(Integer.parseInt(scanner.nextLine()));
+        villa.setCosts(exceptionHandling.enterDouble());
         System.out.println("Số lượng người tối đa:");
-        villa.setAmount(Integer.parseInt(scanner.nextLine()));
+        villa.setAmount(exceptionHandling.enterNumberOfPeople());
         System.out.println("Kiểu thuê:");
         villa.setRentalType(scanner.nextLine());
         System.out.println("Tiêu chuẩn phòng:");
-        villa.setRoomStandard(scanner.nextLine());
+        villa.setRoomStandard(regex.enterServiceInfo());
         System.out.println("Diện tích hồ bơi:");
-        villa.setPoolArea(Double.parseDouble(scanner.nextLine()));
+        villa.setPoolArea(exceptionHandling.enterArea());
         System.out.println("Sô tầng:");
-        villa.setNumberOfFloors(Integer.parseInt(scanner.nextLine()));
+        villa.setNumberOfFloors(exceptionHandling.enterPositiveInteger());
         villaIntegerMap.put(villa, 0);
         writeFileVilla(villaIntegerMap);
     }

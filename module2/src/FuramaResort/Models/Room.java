@@ -6,8 +6,8 @@ public class Room extends Facility {
     public Room() {
     }
 
-    public Room(String nameService, Double area, int costs, int amount, String rentalType, String freeServiceIncluded) {
-        super(nameService, area, costs, amount, rentalType);
+    public Room(String idService, String nameService, double area, double costs, int amount, String rentalType, String freeServiceIncluded) {
+        super(idService, nameService, area, costs, amount, rentalType);
         this.freeServiceIncluded = freeServiceIncluded;
     }
 
@@ -26,7 +26,7 @@ public class Room extends Facility {
                 '}';
     }
     public String convertLine(){
-        String comma=",";
-        return super.convertLine()+comma+this.freeServiceIncluded;
+        String COMMA=",";
+        return super.convertLine()+COMMA+this.freeServiceIncluded;
     }
 }

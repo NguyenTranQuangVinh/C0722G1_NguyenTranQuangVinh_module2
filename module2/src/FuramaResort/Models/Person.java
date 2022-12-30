@@ -10,6 +10,7 @@ public abstract class Person {
 
     protected Person() {
     }
+
     protected Person(String fullName, String dateOfBirth, String gender, int identityCardNumber, int phoneNumber, String email) {
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -79,7 +80,7 @@ public abstract class Person {
     }
 
     public String convertLine() {
-        String comma = ",";
-        return this.fullName + comma + this.dateOfBirth + comma + this.gender + comma + this.identityCardNumber + comma + this.phoneNumber + comma + this.email;
+        String COMMA = ",";
+        return this.fullName + COMMA + this.dateOfBirth + COMMA + this.gender + COMMA + this.identityCardNumber + COMMA + this.phoneNumber + COMMA + this.email;
     }
 }
