@@ -11,24 +11,30 @@ public class CustomerManagementController {
 
     public void displayMenuCustomer() {
         do {
-            System.out.println("1.\tDisplay list customers\n" +
-                    "2.\tAdd new customer\n" +
-                    "3.\tEdit customer\n" +
-                    "4.\tReturn main menu\n");
-            System.out.print("enter your choice: ");
-            choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
-                case 1:
-                    iCustomerService.displayCustomer();
-                    break;
-                case 2:
-                    iCustomerService.addCustomer();
-                    break;
-                case 3:
-                    iCustomerService.editCustomer();
-                    break;
-                case 4:
-                    return;
+            try {
+
+
+                System.out.println("1.\tDisplay list customers\n" +
+                        "2.\tAdd new customer\n" +
+                        "3.\tEdit customer\n" +
+                        "4.\tReturn main menu\n");
+                System.out.print("enter your choice: ");
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        iCustomerService.displayCustomer();
+                        break;
+                    case 2:
+                        iCustomerService.addCustomer();
+                        break;
+                    case 3:
+                        iCustomerService.editCustomer();
+                        break;
+                    case 4:
+                        return;
+                }
+            }catch (NumberFormatException e){
+                System.err.println("Input Number");
             }
         }
         while (true);
