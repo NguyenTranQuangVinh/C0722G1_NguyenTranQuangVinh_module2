@@ -12,6 +12,8 @@ public class EmployeeManagementController {
     public void displaymenuEmployeement() {
 
         do {
+            try {
+
             System.out.println("1\tDisplay list employees\n" +
                     "2\tAdd new employee\n" +
                     "3\tDelete employee\n" +
@@ -36,7 +38,11 @@ public class EmployeeManagementController {
                 case 5:
                     return;
             }
+        }catch (NumberFormatException e){
+                System.err.println("Input Number");
+            }
         }
+
         while (true);
     }
 }

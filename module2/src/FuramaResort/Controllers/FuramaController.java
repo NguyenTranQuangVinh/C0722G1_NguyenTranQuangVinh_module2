@@ -16,8 +16,7 @@ public class FuramaController {
                     "3.\tFacility Management \n" +
                     "4.\tBooking Management\n" +
                     "5.\tPromotion Management\n" +
-                    "6.\tExit\n" +
-                    "\n");
+                    "6.\tExit\n");
             System.out.println("Mời bạn nhập chức năng của Menu: ");
             choice = Integer.parseInt(scanner.nextLine());
 
